@@ -1,0 +1,13 @@
+<RCC>
+    <qresource prefix="/">
+        <file>main.qml</file>
+        <file>qtquickcontrols2.conf</file>
+        <file>data.csv</file>
+        <file>ElementListModel.qml</file>
+        <file>EListDelegate.qml</file>
+        <file>EGridModel.qml</file>
+        <file>EGridDelegate.qml</file>
+        <file>rotate-option.svg</file>
+        <file>EGridViewDetailPanel.qml</file>
+    </qresource>
+</RCC>
