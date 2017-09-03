@@ -3,34 +3,18 @@ import QtQuick.Layouts 1.3
 
 Rectangle {
     id: panel
-
-    function calcX() {
-        var _x = gridViewPanel.width;
-        if(gridViewPanel.selectedElementNumber !== "")
-            _x -= width;
-        return _x;
-    }
-
-    anchors {
-        top: parent.top
-        bottom: parent.bottom
-    }
     width: 250
-    x: calcX()
     color: "#3c3c3c"
 
-    Behavior on x {
-        NumberAnimation { duration: 100 }
-    }
+    Behavior on x { NumberAnimation { duration: 100 } }
 
     ColumnLayout {
         anchors.fill: parent
         spacing: 0
 
-        Rectangle {
+        Item {
             Layout.fillWidth: true
             height: 30
-            color: "transparent"
 
             RowLayout {
                 anchors.fill: parent
@@ -63,7 +47,70 @@ Rectangle {
         Rectangle {
             Layout.fillWidth: true
             Layout.fillHeight: true
-            color: "transparent"
+            color: "#5c5c5c"
+
+            ColumnLayout {
+                anchors.fill: parent
+                anchors.margins: 10
+                Text {
+                    text: qsTr("Period: ")
+                    color: "white"
+                }
+
+                Text {
+                    text: qsTr("Group: ")
+                    color: "white"
+                }
+
+                Text {
+                    text: qsTr("Atomic Number: ")
+                    color: "white"
+                }
+
+                Text {
+                    text: qsTr("Symbol: ")
+                    color: "white"
+                }
+
+                Text {
+                    text: qsTr("Name: ")
+                    color: "white"
+                }
+
+                Text {
+                    text: qsTr("Configuration: ")
+                    color: "white"
+                }
+
+                Text {
+                    text: qsTr("Weight: ")
+                    color: "white"
+                }
+
+                Text {
+                    text: qsTr("Electronegativity: ")
+                    color: "white"
+                }
+
+                Text {
+                    text: qsTr("Melting Point (K): ")
+                    color: "white"
+                }
+
+                Text {
+                    text: qsTr("Boiling Point (K): ")
+                    color: "white"
+                }
+
+                Text {
+                    text: qsTr("Discovered: ")
+                    color: "white"
+                }
+
+                Item {
+                    Layout.fillHeight: true
+                }
+            }
         }
     }
 }

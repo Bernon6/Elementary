@@ -24,6 +24,18 @@ ApplicationWindow {
     }
 
     header: ToolBar {
+        id: toolBar
+        background: Rectangle {
+            implicitHeight: 40
+            color: "#3c3c3c"
+            Rectangle {
+                width: parent.width
+                height: 1
+                color: "#5c5c5c"
+                anchors.bottom: parent.bottom
+            }
+        }
+
         RowLayout {
             anchors.fill: parent
 
@@ -32,8 +44,12 @@ ApplicationWindow {
             }
 
             ToolButton {
-                text: "Flip"
                 onClicked: mainWindow.landscapeMode = !mainWindow.landscapeMode
+                Image {
+                    anchors.fill: parent
+                    anchors.margins: 10
+                    source: "rotate-option.svg"
+                }
             }
         }
     }
@@ -42,68 +58,15 @@ ApplicationWindow {
         return width > height + 100
     }
 
-    Item {
+    EListViewPanel {
         id: listViewPanel
         anchors.fill: parent
         visible: !showGridView()
-
-        ListView {
-            id: listView
-            anchors.fill: parent
-            model: ElementListModel {}
-            focus: true
-            spacing: 1
-            boundsBehavior: Flickable.StopAtBounds
-            delegate: EListDelegate {
-                width: parent.width
-            }
-        }
     }
 
-    Item {
+    EGridViewPanel {
         id: gridViewPanel
         anchors.fill: parent
-        anchors.margins: 5
         visible: showGridView()
-
-        property string selectedElementNumber: ""
-        signal selectedItemChanged(string elementNumber)
-        onSelectedItemChanged: {
-            selectedElementNumber = elementNumber;
-        }
-
-        EGridModel {
-            id: elementGridModel
-        }
-
-        ColumnLayout {
-            id: gridViewLayout
-            anchors.fill: parent
-            spacing: 5
-
-            GridView {
-                id: gridView
-                property string selectedElementNumber: ""
-                onSelectedElementNumberChanged: {
-                    gridViewPanel.selectedElementNumber = elementNumber;
-                }
-
-                Layout.fillHeight: true
-                Layout.fillWidth: true
-                cellWidth: width / 18
-                cellHeight: cellWidth
-                model: elementGridModel
-                boundsBehavior: Flickable.StopAtBounds
-                delegate: EGridDelegate {
-                    Component.onCompleted: {
-                        clicked.connect(gridViewPanel.selectedItemChanged)
-                    }
-                }
-            }
-        }
-
-        EGridViewDetailPanel {
-            id: detailPanel
-        }
     }
 }

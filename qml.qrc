@@ -7,7 +7,9 @@
         <file>EListDelegate.qml</file>
         <file>EGridModel.qml</file>
         <file>EGridDelegate.qml</file>
-        <file>rotate-option.svg</file>
         <file>EGridViewDetailPanel.qml</file>
+        <file>rotate-option.svg</file>
+        <file>EListViewPanel.qml</file>
+        <file>EGridViewPanel.qml</file>
     </qresource>
 </RCC>
